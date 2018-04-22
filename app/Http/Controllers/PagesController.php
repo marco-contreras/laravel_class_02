@@ -73,6 +73,25 @@ class PagesController extends Controller
 
         $request->input('name');
 
-        return $request->all();
+        //This is a form of response
+        response('Texto En Response', 201, ['X-TOKEN' => 'ThisIsAToken']);
+
+        response('Texto En Response', 201)
+            ->header('X-Token', 'secret')
+            ->header('X-Token-2', 'secret-2')
+            ->cookie('SIM', '1234');
+
+        $data = $request->all();
+        response()->json(compact('data'), 202)
+            ->header('x-token', 'super-token');
+
+        //This array will be convert to JSON
+        //return $request->all();
+
+        //You use this line if you need to go to another page
+        redirect()->route('contact')->with('info', 'Your message was send');
+
+        //You use this line if you need back to the last page
+        return back()->with('info', 'Your message was send');
     }
 }

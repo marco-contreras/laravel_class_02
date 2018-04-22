@@ -18,27 +18,31 @@
     </style>
 </head>
 <body>
-<form method="POST" action="message">
-    <label for="nombre">
-        Name
-        <input type="text" name="name" value="{{ old('name') }}">
-        {!! $errors->first('name', '<span class="error">:message</span>') !!}
-    </label><br>
+@if(session()->has('info'))
+    <h1>{{ session('info') }}</h1>
+@else
+    <form method="POST" action="message">
+        <label for="nombre">
+            Name
+            <input type="text" name="name" value="{{ old('name') }}">
+            {!! $errors->first('name', '<span class="error">:message</span>') !!}
+        </label><br>
 
-    <label for="email">
-        Email
-        <input type="text" name="email" value="{{ old('email') }}">
-        {!! $errors->first('email', '<span class="error">:message</span>') !!}
-    </label><br>
+        <label for="email">
+            Email
+            <input type="text" name="email" value="{{ old('email') }}">
+            {!! $errors->first('email', '<span class="error">:message</span>') !!}
+        </label><br>
 
-    <label for="message">
-        Message
-        <textarea name="message">{{ old('message') }}</textarea>
-        {!! $errors->first('message', '<span class="error">:message</span>') !!}
-    </label><br>
+        <label for="message">
+            Message
+            <textarea name="message">{{ old('message') }}</textarea>
+            {!! $errors->first('message', '<span class="error">:message</span>') !!}
+        </label><br>
 
-    <input type="submit" value="Send">
-</form>
+        <input type="submit" value="Send">
+    </form>
+@endif
 
 </body>
 </html>

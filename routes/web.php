@@ -26,8 +26,8 @@ Route::get('/color/violet', ['as' => 'violet', 'uses' => 'PagesController@violet
 Route::get('/blur/{color?}', ['as' => 'blur', 'uses' => 'PagesController@blurHandler']);
 
 
-Route::get('/contact', ['as' => 'blur', 'uses' => 'PagesController@contactHandler']);
+Route::get('/contact', ['as' => 'contact', 'uses' => 'PagesController@contactHandler']);
 
-Route::post('/message', ['as' => 'blur', 'uses' => 'PagesController@messageHandler']);
+Route::post('/message', ['as' => 'message', 'uses' => 'PagesController@messageHandler']);
 
 
