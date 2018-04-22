@@ -22,6 +22,9 @@
     <h1>{{ session('info') }}</h1>
 @else
     <form method="POST" action="message">
+        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+        {{ csrf_field() }}
+
         <label for="nombre">
             Name
             <input type="text" name="name" value="{{ old('name') }}">

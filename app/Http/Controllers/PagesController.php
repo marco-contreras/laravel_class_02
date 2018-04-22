@@ -8,6 +8,13 @@ use App\Http\Requests\MessageRequest;
 
 class PagesController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('access'); #All the pages
+        //$this->middleware('access', ['only', 'welcome']); #Only welcome page
+        $this->middleware('access', ['except', 'welcome']); #All except welcome page
+    }
+
     public function welcomeHandler()
     {
         return view('welcome');

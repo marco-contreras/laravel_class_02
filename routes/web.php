@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', ['as' => 'welcome', 'uses' => 'PagesController@welcomeHandler']);
+Route::get('/', ['as' => 'welcome', 'uses' => 'PagesController@welcomeHandler'])->middleware('access');
 
 Route::get('/color/blue', ['as' => 'blue', 'uses' => 'PagesController@blueHandler']);
 
