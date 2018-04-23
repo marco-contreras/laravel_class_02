@@ -31,3 +31,10 @@ Route::get('/contact', ['as' => 'contact', 'uses' => 'PagesController@contactHan
 Route::post('/message', ['as' => 'message', 'uses' => 'PagesController@messageHandler']);
 
 
+Route::get('messages',               ['as' => 'messages.index',    'uses' => 'MessagesController@index']);
+Route::get('messages/create',        ['as' => 'messages.create',   'uses' => 'MessagesController@create']);
+Route::post('messages/store',        ['as' => 'messages.store',    'uses' => 'MessagesController@store']);
+Route::get('messages/show/{id}',     ['as' => 'messages.show',     'uses' => 'MessagesController@show']);
+Route::get('messages/edit/{id}',     ['as' => 'messages.edit',     'uses' => 'MessagesController@edit']);
+Route::put('messages/update/{id}',   ['as' => 'messages.update',   'uses' => 'MessagesController@update']);
+Route::delete('messages/destroy/{id}',  ['as' => 'messages.destroy',  'uses' => 'MessagesController@destroy']);
