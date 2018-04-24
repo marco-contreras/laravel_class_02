@@ -10,8 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('createUserTest', function () {
+    $user = new \App\User();
+    $user->name = 'Marco Contreras';
+    $user->email = 'marco.contreras@gmail.com';
+    $user->password = bcrypt('123123');
+    $user->save();
+
+    return $user;
+});
+
 
 Route::get('/', ['as' => 'welcome', 'uses' => 'PagesController@welcomeHandler'])->middleware('access');
+Route::get('home', ['as' => 'home', 'uses' => 'PagesController@homeHandler'])->middleware('access');
 
 Route::get('/color/blue', ['as' => 'blue', 'uses' => 'PagesController@blueHandler']);
 
@@ -41,3 +52,10 @@ Route::get('messages/{id}/edit',  ['as' => 'messages.edit',     'uses' => 'Messa
 Route::put('messages/{id}',       ['as' => 'messages.update',   'uses' => 'MessagesController@update']);
 Route::delete('messages/{id}',    ['as' => 'messages.destroy',  'uses' => 'MessagesController@destroy']);
 */
+
+Route::get('login', 'Auth\LoginController@showLoginForm');
+
+//Route::post('login', 'Auth\LoginController@login');
+
+Route::post('login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
+Route::get('logout', 'Auth\LoginController@logout');

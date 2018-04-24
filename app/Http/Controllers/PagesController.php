@@ -20,6 +20,11 @@ class PagesController extends Controller
         return view('welcome');
     }
 
+    public function homeHandler()
+    {
+        return view('home');
+    }
+
     public function blueHandler()
     {
         return view('blue');

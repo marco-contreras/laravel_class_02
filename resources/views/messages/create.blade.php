@@ -18,31 +18,35 @@
     </style>
 </head>
 <body>
-<h1>Enviar Mensaje</h1>
 
-<form method="POST" action="{{ route('messages.store') }}">
-    {{ csrf_field() }}
+<h1>Contacto</h1>
+@if(session()->has('info'))
+    <h3>{{ session('info') }}</h3>
+@else
+    <form method="POST" action="{{ route('messages.store') }}">
+        {!! csrf_field() !!}
 
-    <label for="nombre">
-        Name
-        <input type="text" name="name" value="{{ old('name') }}">
-        {!! $errors->first('name', '<span class="error">:message</span>') !!}
-    </label><br>
+        <label for="nombre">
+            Name
+            <input type="text" name="name" value="{{ old('name') }}">
+            {!! $errors->first('name', '<span class="error">:message</span>') !!}
+        </label><br>
 
-    <label for="email">
-        Email
-        <input type="text" name="email" value="{{ old('email') }}">
-        {!! $errors->first('email', '<span class="error">:message</span>') !!}
-    </label><br>
+        <label for="email">
+            Email
+            <input type="text" name="email" value="{{ old('email') }}">
+            {!! $errors->first('email', '<span class="error">:message</span>') !!}
+        </label><br>
 
-    <label for="message">
-        Message
-        <textarea name="message">{{ old('message') }}</textarea>
-        {!! $errors->first('message', '<span class="error">:message</span>') !!}
-    </label><br>
+        <label for="message">
+            Message
+            <textarea name="message">{{ old('message') }}</textarea>
+            {!! $errors->first('message', '<span class="error">:message</span>') !!}
+        </label><br>
 
-    <input type="submit" value="Send">
-</form>
+        <input type="submit" value="Send">
+    </form>
+@endif
 
 </body>
 </html>

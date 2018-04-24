@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class MessagesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['create', 'store']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -76,7 +81,7 @@ class MessagesController extends Controller
         Message::create($request->all());
 
         //Redirect user
-        return redirect()->route('messages.index');
+        return redirect()->route('messages.create')->with('info', 'Hemos recivido tu mensaje');
     }
 
     /**
